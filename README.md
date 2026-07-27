@@ -1,5 +1,6 @@
 # VGI — Valoración Geriátrica Integral
 
+Formato de especialidad geriátrica incluida al flujo de consulta.
 Módulo de Valoración Geriátrica Integral para la plataforma **DocTree EHR**. Implementa la captura, validación y análisis de escalas geriátricas como paso opcional dentro del flujo de consulta médica.
 
 ---
