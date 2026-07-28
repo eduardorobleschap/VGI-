@@ -5,18 +5,55 @@ import { z } from 'zod';
 // ═══════════════════════════════════════════════════════════════
 
 export const KatzSchema = z.object({
-  score: z.number().min(0).max(6).nullable().default(null),
+  bano: z.boolean().nullable().default(null),
+  vestido: z.boolean().nullable().default(null),
+  uso_bano: z.boolean().nullable().default(null),
+  movilidad: z.boolean().nullable().default(null),
+  continencia: z.boolean().nullable().default(null),
+  alimentacion: z.boolean().nullable().default(null),
   notes: z.string().default(''),
 });
 
 export const BarthelSchema = z.object({
-  score: z.number().min(0).max(100).nullable().default(null),
-  max: z.number().default(100),
+  comer: z.number().nullable().default(null),
+  lavarse: z.number().nullable().default(null),
+  vestirse: z.number().nullable().default(null),
+  arreglarse: z.number().nullable().default(null),
+  deposiciones: z.number().nullable().default(null),
+  miccion: z.number().nullable().default(null),
+  uso_retrete: z.number().nullable().default(null),
+  trasladarse: z.number().nullable().default(null),
+  deambular: z.number().nullable().default(null),
+  escaleras: z.number().nullable().default(null),
+  notes: z.string().default(''),
 });
 
 export const LawtonSchema = z.object({
-  score: z.number().min(0).max(8).nullable().default(null),
-  max: z.number().default(8),
+  telefono: z.number().nullable().default(null),
+  compras: z.number().nullable().default(null),
+  comida: z.number().nullable().default(null),
+  casa: z.number().nullable().default(null),
+  ropa: z.number().nullable().default(null),
+  transporte: z.number().nullable().default(null),
+  medicacion: z.number().nullable().default(null),
+  dinero: z.number().nullable().default(null),
+  notes: z.string().default(''),
+});
+
+export const RosowSchema = z.object({
+  trabajo_pesado: z.number().nullable().default(null),
+  escaleras: z.number().nullable().default(null),
+  caminar: z.number().nullable().default(null),
+  notes: z.string().default(''),
+});
+
+export const NagiSchema = z.object({
+  empujar: z.number().nullable().default(null),
+  agacharse: z.number().nullable().default(null),
+  levantar_brazos: z.number().nullable().default(null),
+  escribir: z.number().nullable().default(null),
+  cargar_peso: z.number().nullable().default(null),
+  notes: z.string().default(''),
 });
 
 export const SarcFSchema = z.object({
@@ -36,6 +73,8 @@ export const FuncionalSchema = z.object({
   katz: KatzSchema.default({}),
   barthel: BarthelSchema.default({}),
   lawton: LawtonSchema.default({}),
+  rosow: RosowSchema.default({}),
+  nagi: NagiSchema.default({}),
   sarc_f: SarcFSchema.default({}),
   frail: FrailSchema.default({}),
   fuerza_prension: FuerzaPresionSchema.default({}),
@@ -259,9 +298,34 @@ export const VGI_TABS: VGITab[] = [
 export function createEmptyVGIData(): VGIData {
   return {
     funcional: {
-      katz: { score: null, notes: '' },
-      barthel: { score: null, max: 100 },
-      lawton: { score: null, max: 8 },
+      katz: {
+        bano: null,
+        vestido: null,
+        uso_bano: null,
+        movilidad: null,
+        continencia: null,
+        alimentacion: null,
+        notes: ''
+      },
+      barthel: {
+        comer: null,
+        lavarse: null,
+        vestirse: null,
+        arreglarse: null,
+        deposiciones: null,
+        miccion: null,
+        uso_retrete: null,
+        trasladarse: null,
+        deambular: null,
+        escaleras: null,
+        notes: ''
+      },
+      lawton: { 
+        telefono: null, compras: null, comida: null, casa: null, 
+        ropa: null, transporte: null, medicacion: null, dinero: null, notes: '' 
+      },
+      rosow: { trabajo_pesado: null, escaleras: null, caminar: null, notes: '' },
+      nagi: { empujar: null, agacharse: null, levantar_brazos: null, escribir: null, cargar_peso: null, notes: '' },
       sarc_f: { score: null },
       frail: { score: null },
       fuerza_prension: { der: null, izq: null },

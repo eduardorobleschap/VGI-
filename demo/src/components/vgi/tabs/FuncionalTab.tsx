@@ -3,6 +3,11 @@
 import React from 'react';
 import type { Funcional } from '../../../types/vgi';
 import { ScoreInput } from '../ScoreInput';
+import { KatzIndexForm } from '../KatzIndexForm';
+import { BarthelIndexForm } from '../BarthelIndexForm';
+import { LawtonIndexForm } from '../LawtonIndexForm';
+import { RosowIndexForm } from '../RosowIndexForm';
+import { NagiIndexForm } from '../NagiIndexForm';
 
 interface FuncionalTabProps {
   data: Funcional;
@@ -13,64 +18,34 @@ export function FuncionalTab({ data, onChange }: FuncionalTabProps) {
   return (
     <div className="space-y-6">
       {/* Katz */}
-      <fieldset className="rounded-xl bg-gray-50 border border-gray-200 p-5 space-y-4">
-        <legend className="text-sm font-semibold text-gray-800 px-2">
-          Índice de Katz — Actividades Básicas de la Vida Diaria
-        </legend>
-        <ScoreInput
-          label="Puntuación"
-          value={data.katz.score}
-          onChange={(v) => onChange('katz.score', v)}
-          min={0}
-          max={6}
-          helperText="0 = Dependencia total · 6 = Independencia completa en las 6 funciones"
-          futureCalculator
-        />
-        <div>
-          <label className="text-sm text-gray-500 mb-1 block">Notas clínicas</label>
-          <textarea
-            value={data.katz.notes}
-            onChange={(e) => onChange('katz.notes', e.target.value)}
-            rows={3}
-            className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm
-                       text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2
-                       focus:ring-violet-500/30 focus:border-violet-500 resize-none"
-            placeholder="Observaciones sobre funcionalidad básica..."
-          />
-        </div>
-      </fieldset>
+      <KatzIndexForm
+        data={data.katz}
+        onChange={(field, value) => onChange(`katz.${field}`, value)}
+      />
 
       {/* Barthel */}
-      <fieldset className="rounded-xl bg-gray-50 border border-gray-200 p-5 space-y-4">
-        <legend className="text-sm font-semibold text-gray-800 px-2">
-          Índice de Barthel — ABVD
-        </legend>
-        <ScoreInput
-          label="Puntuación"
-          value={data.barthel.score}
-          onChange={(v) => onChange('barthel.score', v)}
-          min={0}
-          max={data.barthel.max}
-          helperText="0-20 Total · 21-60 Severa · 61-90 Moderada · 91-99 Leve · 100 Independiente"
-          futureCalculator
-        />
-      </fieldset>
+      <BarthelIndexForm
+        data={data.barthel}
+        onChange={(field, value) => onChange(`barthel.${field}`, value)}
+      />
 
       {/* Lawton */}
-      <fieldset className="rounded-xl bg-gray-50 border border-gray-200 p-5 space-y-4">
-        <legend className="text-sm font-semibold text-gray-800 px-2">
-          Escala de Lawton & Brody — AIVD
-        </legend>
-        <ScoreInput
-          label="Puntuación"
-          value={data.lawton.score}
-          onChange={(v) => onChange('lawton.score', v)}
-          min={0}
-          max={data.lawton.max}
-          helperText="0 = Máxima dependencia · 8 = Independencia instrumental total"
-          futureCalculator
-        />
-      </fieldset>
+      <LawtonIndexForm
+        data={data.lawton}
+        onChange={(field, value) => onChange(`lawton.${field}`, value)}
+      />
+
+      {/* Rosow-Breslau */}
+      <RosowIndexForm
+        data={data.rosow}
+        onChange={(field, value) => onChange(`rosow.${field}`, value)}
+      />
+
+      {/* Nagi */}
+      <NagiIndexForm
+        data={data.nagi}
+        onChange={(field, value) => onChange(`nagi.${field}`, value)}
+      />
 
       {/* SARC-F */}
       <fieldset className="rounded-xl bg-gray-50 border border-gray-200 p-5 space-y-4">
