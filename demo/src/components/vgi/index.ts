@@ -7,6 +7,11 @@
 export { VGIPanel } from './VGIPanel';
 export { VGITrigger } from './VGITrigger';
 export { AlertBadges } from './AlertBadges';
+export { KatzIndexForm } from './KatzIndexForm';
+export { BarthelIndexForm } from './BarthelIndexForm';
+export { LawtonIndexForm } from './LawtonIndexForm';
+export { RosowIndexForm } from './RosowIndexForm';
+export { NagiIndexForm } from './NagiIndexForm';
 export { ScoreInput } from './ScoreInput';
 
 // Tabs individuales (rara vez importados directamente)
